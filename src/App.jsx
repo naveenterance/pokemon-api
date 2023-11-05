@@ -8,16 +8,12 @@ const App = () => {
 
   useEffect(() => {
     const fetchAbilities = async () => {
-      try {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
-        const data = await response.json();
-        const dittoAbilities = data.abilities.map(
-          (ability) => ability.ability.name
-        );
-        setAbilities(dittoAbilities);
-      } catch (error) {
-        console.log(error);
-      }
+      const response = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
+      const data = await response.json();
+      const dittoAbilities = data.abilities.map(
+        (ability) => ability.ability.name
+      );
+      setAbilities(dittoAbilities);
     };
 
     fetchAbilities();
@@ -28,7 +24,6 @@ const App = () => {
       const response = await fetch(" https://pokeapi.co/api/v2/pokemon/ditto");
       const jsonData = await response.json();
       setData(jsonData);
-      console.log(jsonData);
     };
 
     fetchData();
@@ -55,60 +50,5 @@ const App = () => {
     </div>
   );
 };
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import { restaurantList } from "./constants";
-
-// const RestaurantCard = ({
-//   cloudinaryImageId,
-//   name,
-//   cuisines,
-//   area,
-//   lastMileTravelString,
-//   costForTwoString,
-//   avgRating,
-// }) => {
-//   return (
-//     <div className="card">
-//       <img
-//         src={
-//           "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-//           cloudinaryImageId
-//         }
-//       />
-//       <h2>{name}</h2>
-//       <h4>{cuisines.join(", ")}</h4>
-//       <h4>{area}</h4>
-//       <span>
-//         <h4>
-//           <i class="fa-solid fa-star"></i>
-//           {avgRating}
-//         </h4>
-//         <h4>{lastMileTravelString}</h4>
-//         <h4>{costForTwoString}</h4>
-//       </span>
-//     </div>
-//   );
-// };
-
-// // Body Component for body section: It contain all restaurant cards
-// // We are mapping restaurantList array and passing data to RestaurantCard component as props with unique key as index
-// const Body = () => {
-//   return (
-//     <div className="restaurant-list">
-//       {restaurantList.map((restaurant) => {
-//         return <RestaurantCard key={restaurant.data.id} {...restaurant.data} />;
-//       })}
-//     </div>
-//   );
-// };
-
-// const AppLayout = () => {
-//   return (
-//     <>
-//       <Body />
-//     </>
-//   );
-// };
 
 export default App;
