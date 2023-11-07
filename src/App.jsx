@@ -15,7 +15,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://pokeapi.co/api/v2/pokemon/?limit=100"
+          "https://pokeapi.co/api/v2/pokemon/?limit=20000"
         );
         const jsonData = await response.json();
         setName(jsonData.results);
