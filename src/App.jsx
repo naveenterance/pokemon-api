@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
+function t(url) {
+  const truncatedUrl = url.split("/")[6];
+
+  return truncatedUrl;
+}
+
 const App = () => {
   // note: the id field is mandatory
   const [items, setName] = useState([]);
@@ -45,6 +51,14 @@ const App = () => {
       <>
         <span key={item.url} style={{ display: "block", textAlign: "left" }}>
           {item.name}
+          <img
+            src={
+              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
+              t(item.url) +
+              ".png"
+            }
+            alt="no img"
+          />
         </span>
       </>
     );
