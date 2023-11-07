@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
+import "./App.css";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
-const App = () => {
+function App() {
   // note: the id field is mandatory
-  const [items, setName] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://pokeapi.co/api/v2/pokemon/?limit=100"
-        );
-        const jsonData = await response.json();
-        setName(jsonData.results);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  const items = [
+    {
+      id: 0,
+      name: "Cobol",
+    },
+    {
+      id: 1,
+      name: "JavaScript",
+    },
+    {
+      id: 2,
+      name: "Basic",
+    },
+    {
+      id: 3,
+      name: "PHP",
+    },
+    {
+      id: 4,
+      name: "Java",
+    },
+  ];
 
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
@@ -43,8 +50,8 @@ const App = () => {
   const formatResult = (item) => {
     return (
       <>
-        <span key={item.url} style={{ display: "block", textAlign: "left" }}>
-          {item.name}
+        <span style={{ display: "block", textAlign: "left" }}>
+          name: {item.name}
         </span>
       </>
     );
@@ -67,6 +74,6 @@ const App = () => {
       </header>
     </div>
   );
-};
+}
 
 export default App;
