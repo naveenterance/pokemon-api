@@ -65,8 +65,8 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App  flex justify-center xl:justify-end  py-10    ">
+      <header className="App-header  px-10   ">
         <div style={{ width: 400 }}>
           <ReactSearchAutocomplete
             items={items}
