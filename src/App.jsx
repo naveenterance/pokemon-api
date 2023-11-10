@@ -184,7 +184,10 @@ const App = () => {
                 <div>
                   {abilities.map((ability) => (
                     <div key={ability} className="text-bold flex ">
-                      <img src="./icons/pokemon.png" className="w-8 h-8 p-1" />
+                      <img
+                        src="https://raw.githubusercontent.com/naveenterance/pokemon-api/master/icons/pokemon.png"
+                        className="w-8 h-8 p-1"
+                      />
                       {ability.toUpperCase()}
                     </div>
                   ))}
