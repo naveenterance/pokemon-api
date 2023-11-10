@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
-function t(url) {
+function t(url = "") {
   const truncatedUrl = url.split("/")[6];
 
   return truncatedUrl;
@@ -12,7 +12,7 @@ const App = () => {
   const [items, setItems] = useState([]);
   const [properties, setProperties] = useState([]);
   const [abilities, setAbilities] = useState([]);
-  // const [stats, setStats] = useState([]);
+  const [stats, setStats] = useState([]);
   const [divContent, setDivContent] = useState(
     Math.floor(Math.random() * 1000) + 1
   );
@@ -23,12 +23,7 @@ const App = () => {
     setProperties(data);
     const pAbilities = data.abilities.map((ability) => ability.ability.name);
     setAbilities(pAbilities);
-    // const pStat = data.stats.map((stat) => {
-    //   return {
-    //     heading: ,
-    //     name: ability.ability.name,
-    //   };
-    // });
+    setStats(data.stats);
   };
 
   fetchInfo(divContent);
@@ -95,28 +90,37 @@ const App = () => {
 
   return (
     <>
-      <div className="App  flex justify-center xl:justify-end  py-10    ">
-        <header className="App-header  px-10   ">
-          <div style={{ width: 400 }}>
-            <ReactSearchAutocomplete
-              items={items}
-              onSearch={handleOnSearch}
-              onHover={handleOnHover}
-              onSelect={handleOnSelect}
-              onFocus={handleOnFocus}
-              autoFocus
-              formatResult={formatResult}
-            />
-          </div>
-        </header>
+      <div>
+        <div style={{ width: 400 }}>
+          <ReactSearchAutocomplete
+            items={items}
+            onSearch={handleOnSearch}
+            onHover={handleOnHover}
+            onSelect={handleOnSelect}
+            onFocus={handleOnFocus}
+            autoFocus
+            formatResult={formatResult}
+          />
+        </div>
       </div>
-      <div className="App  flex justify-center   py-10    ">
+      <div className="card lg:card-side bg-base-100 shadow-xl">
         <h1>Data:</h1>
-        <ul>
-          {[properties].map((item) => (
-            <li>{item?.species?.url}</li>
-          ))}
-        </ul>
+
+        {[properties].map((item) => (
+          <figure>
+            {" "}
+            <img
+              className="w-32 h-32"
+              src={
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
+                t(item?.species?.url) +
+                ".png"
+              }
+              alt="no img"
+            />
+          </figure>
+        ))}
+
         <div>
           <h1>abilities</h1>
           {abilities.length === 0 ? (
@@ -128,6 +132,16 @@ const App = () => {
               ))}
             </ul>
           )}
+        </div>
+        <div>
+          <h1>Stats</h1>
+          {stats.map((stat) => (
+            <div key={stat.stat.name}>
+              <p>
+                {stat.stat.name}: {stat.base_stat}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </>
