@@ -101,7 +101,7 @@ const App = () => {
 
   return (
     <>
-      <div className="float-right p-4">
+      <div className="md:float-right w-1/8 p-4">
         <div style={{ width: 400 }}>
           <ReactSearchAutocomplete
             items={items}
@@ -150,7 +150,7 @@ const App = () => {
             </div>
 
             <div className="col-span-1 md:col-span-1">
-              <div className="flex">
+              <div className="flex  " data-tip="hello">
                 <div>
                   {stats.map((stat) => (
                     <div key={stat.stat.name} className="flex">
@@ -158,6 +158,7 @@ const App = () => {
                         src={`icons/${stat.stat.name}.png`}
                         className="w-8 h-8 p-1"
                       />
+
                       {stat.base_stat}
                     </div>
                   ))}
