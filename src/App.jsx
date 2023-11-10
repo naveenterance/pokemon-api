@@ -76,6 +76,7 @@ const App = () => {
           key={item.url}
           style={{ display: "block", textAlign: "left" }}
           onMouseEnter={() => setDivContent(t(item.url))}
+          onHover={() => setDivContent(t(item.url))}
         >
           {item.name}
           <img
@@ -91,7 +92,7 @@ const App = () => {
               item.name +
               ".gif"
             }
-            onError={(i) => (i.target.style.display = "none")}
+            // onError={(i) => (i.target.style.display = "none")}
           />
         </span>
       </>
@@ -100,7 +101,7 @@ const App = () => {
 
   return (
     <>
-      <div className="float-right">
+      <div className="float-right p-4">
         <div style={{ width: 400 }}>
           <ReactSearchAutocomplete
             items={items}
@@ -113,58 +114,81 @@ const App = () => {
           />
         </div>
       </div>
-      <div>
-        <h1>Data:</h1>
-
-        {[properties].map((item) => (
-          <figure>
-            {" "}
-            <img
-              src={
-                "https://img.pokemondb.net/artwork/large/" +
-                item?.species?.name +
-                ".jpg"
-              }
-              width="100"
-              height="100"
-            />
-            <img
-              src={
-                "https://img.pokemondb.net/sprites/black-white/anim/shiny/" +
-                item?.species?.name +
-                ".gif"
-              }
-              onError={(i) => (i.target.style.display = "none")}
-            />
-            <h1>{item?.species?.name}</h1>
-          </figure>
-        ))}
-
-        <div>
-          <h2>Abilities</h2>
-          <ul>
-            {abilities.map((ability) => (
-              <li key={ability}>{ability}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2>type</h2>
-          <ul>
-            {types.map((type) => (
-              <li key={type}>{type}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h1>Stats</h1>
-          {stats.map((stat) => (
-            <div key={stat.stat.name}>
-              <p>
-                {stat.stat.name}: {stat.base_stat}
-              </p>
+      <div className="container max-w-md m-8 float-left">
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="grid grid-cols-2 gap-1">
+            <div className="col-span-1 md:col-span-1 border-b-4 border-indigo-500">
+              <div className="flex">
+                <div>
+                  {[properties].map((item) => (
+                    <figure>
+                      {" "}
+                      <img
+                        src={
+                          "https://img.pokemondb.net/artwork/large/" +
+                          item?.species?.name +
+                          ".jpg"
+                        }
+                        width="100"
+                        height="100"
+                      />
+                      <img
+                        src={
+                          "https://img.pokemondb.net/sprites/black-white/anim/shiny/" +
+                          item?.species?.name +
+                          ".gif"
+                        }
+                        //onError={(i) => (i.target.style.display = "none")}
+                      />
+                      <div className="text-2xl">
+                        {item?.species?.name.toUpperCase()}
+                      </div>
+                    </figure>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
+
+            <div className="col-span-1 md:col-span-1">
+              <div className="flex">
+                <div>
+                  {stats.map((stat) => (
+                    <div key={stat.stat.name}>
+                      <p>
+                        {stat.stat.name}: {stat.base_stat}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="col-span-1 md:col-span-1">
+              <div className="flex">
+                <div>
+                  <div class="flex">
+                    {types.map((type) => (
+                      // <li key={type}>{type}</li>
+                      <img src={`icons/${type}.png`} className="w-8 h-8" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-span-1 md:col-span-1">
+              <div className="flex">
+                <div>
+                  {abilities.map((ability) => (
+                    <div key={ability} className="text-bold flex ">
+                      <img src="icons/pokemon.png" className="w-8 h-8 p-1" />
+                      {ability.toUpperCase()}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
