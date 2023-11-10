@@ -153,10 +153,12 @@ const App = () => {
               <div className="flex">
                 <div>
                   {stats.map((stat) => (
-                    <div key={stat.stat.name}>
-                      <p>
-                        {stat.stat.name}: {stat.base_stat}
-                      </p>
+                    <div key={stat.stat.name} className="flex">
+                      <img
+                        src={`icons/${stat.stat.name}.png`}
+                        className="w-8 h-8 p-1"
+                      />
+                      {stat.base_stat}
                     </div>
                   ))}
                 </div>
