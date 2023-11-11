@@ -155,7 +155,11 @@ const App = () => {
                   {stats.map((stat) => (
                     <div key={stat.stat.name} className="flex">
                       <img
-                        src={`icons/${stat.stat.name}.png`}
+                        src={
+                          "https://raw.githubusercontent.com/naveenterance/pokemon-api/master/icons/" +
+                          stat.stat.name +
+                          ".png"
+                        }
                         className="w-8 h-8 p-1"
                       />
 
