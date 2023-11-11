@@ -92,6 +92,7 @@ const App = () => {
               item.name +
               ".gif"
             }
+            alt="no sprite "
             // onError={(i) => (i.target.style.display = "none")}
           />
         </span>
@@ -138,7 +139,7 @@ const App = () => {
                           item?.species?.name +
                           ".gif"
                         }
-                        //onError={(i) => (i.target.style.display = "none")}
+                        alt="No sprite " //onError={(i) => (i.target.style.display = "none")}
                       />
                       <div className="text-2xl">
                         {item?.species?.name.toUpperCase()}
