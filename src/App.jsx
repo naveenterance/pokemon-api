@@ -175,15 +175,16 @@ const App = () => {
                 <div>
                   <div class="flex">
                     {types.map((type) => (
-                      // <li key={type}>{type}</li>
-                      <img
-                        src={
-                          "https://raw.githubusercontent.com/naveenterance/pokemon-api/master/icons/" +
-                          type +
-                          ".png"
-                        }
-                        className="w-8 h-8"
-                      />
+                      <div key={type}>
+                        <img
+                          src={
+                            "https://raw.githubusercontent.com/naveenterance/pokemon-api/master/icons/" +
+                            type +
+                            ".png"
+                          }
+                          className="w-8 h-8"
+                        />
+                      </div>
                     ))}
                   </div>
                 </div>
